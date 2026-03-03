@@ -1,5 +1,8 @@
 -- drop uniqueness index on Sysname
-DROP INDEX [IX_UserCasinoGames] ON [BBBetsArchive].[dbo].[UserCasinoGames]
+DROP INDEX [IX_UserCasinoGames_1] ON [BBBetsArchive].[dbo].[UserCasinoGames]
+GO
+
+SET ANSI_PADDING ON
 GO
 
 -- apply Sysname changes
@@ -1788,8 +1791,9 @@ update [BBBetsArchive].[dbo].[UserCasinoGames] set Sysname = 'EM_diamondbounty_t
 
 
 -- recreate uniqueness index on Sysname
-CREATE UNIQUE NONCLUSTERED INDEX [IX_UserCasinoGames] ON [BBBetsArchive].[dbo].[UserCasinoGames]
+CREATE UNIQUE NONCLUSTERED INDEX [IX_UserCasinoGames_1] ON [BBBetsArchive].[dbo].[UserCasinoGames]
 (
-	[GameId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[Sysname] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
+
